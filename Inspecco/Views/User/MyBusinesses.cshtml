@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CoreLayer.Dtos.BusinessDto>
+@{
+    ViewData["Title"] = "MyBusinesses";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>MyBusinesses</h1>
+
+<p>
+    <a asp-action="Add" asp-controller="Business">New Business Add</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Business Name
+        </th>
+        <th>
+            Date Of Foundation
+        </th>
+        <th>
+            Substriber
+        </th>
+        <th>
+            Report
+        </th>
+    </tr>
+    @foreach (var item in Model)
+	{
+    <tr>
+        <td>
+          @Html.ActionLink(@item.BusinessName, "Detail", "Business",new {@id=item.BusinessId })
+        </td>
+        <td>
+            @item.DateOfFoundation
+        </td>
+        <td>
+           :Substriber
+        </td>
+        <td>
+            @Html.ActionLink("Bankruptcy","Delete","Business",new {id=item.BusinessId},new { @id="delete"})
+        </td>
+    </tr>
+    }
+</table>
+<style>
+    #delete{
+        color:red;
+    }
+</style>

@@ -1,0 +1,64 @@
+﻿@model CoreLayer.ViewModels.BusinessDetai
+
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    
+<section>
+    <aside>
+        <div>
+            <h2>BUİLDER</h2>
+            <table class="table">
+                <tr>
+                    <td>
+                        @Model.user.FirstName
+                    </td>
+                    <td>
+                        @Model.user.LastName
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        @Model.user.PhoneNumber
+                    </td>
+                </tr>
+            </table>
+           
+        </div>
+        <div>
+            <h2>SUBSTRIBERS</h2>
+            @Model.Invitations.Count Katılımcı var.
+        <ul>
+            @foreach (var subs in Model.Invitations)
+            {
+<li>@subs.InvitationId</li>
+            }
+        </ul>
+        </div>
+        <div>
+            <h2>USERS</h2>
+            <ul>
+                @foreach (var item in Model.Users)
+	{
+		 <li>@item.FirstName @item.LastName @Html.ActionLink("Invite","Add","Invitation")</li>
+	}
+            </ul>
+        </div>
+    </aside>
+    <article>
+        <h2 style="text-align:center">  @Model.business.BusinessName</h2>
+       Kurulus Tarihi: @Model.business.DateOfFoundation
+    </article>
+</section>
+<style>
+    section{
+        display:grid;
+        grid-template-columns:30% 70%;
+        width:100%;
+        height:1000px;
+    }
+</style>
+
+ 

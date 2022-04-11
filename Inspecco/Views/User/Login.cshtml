@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Login</h1>
+<form asp-controller="User" asp-action="Login" method="post">
+    <table class="table">
+        <tr>
+            <td>
+                Username
+            </td>
+            <td>
+                <input type="text" name="userName" placeholder="Username Enter" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Password
+            </td>
+            <td>
+                <input type="password" name="password" placeholder="Password Enter" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Giriş Yap" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+            </td>
+        </tr>
+    </table>
+</form>
+    @TempData["Hata"]
